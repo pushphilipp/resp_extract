@@ -1,8 +1,8 @@
 # respiration_extraction
 ## General 
-1. This repo contains the code written for my bachelor thesis at the FAU in collaboration with the Machine Learning and Data Analytics Lab (MaD Lab).
-2. Its structured in Datasets, Algorithms and Pipelines according to the tpcp-Concept from Küderle et al. (https://tpcp.readthedocs.io/en/latest/README.html).
-3. It implements various Algorithms for extracting Respiratory Rate (RR) from other biomedical signals e.g. IMU and ECG. The algorithms were inspired from other papers, which are mentioned in the Documentation and/or the corresponding class names.
+1. This repo contains the code written for my bachelor thesis at the FAU in collaboration with the Machine Learning and Data Analytics Lab (MaD Lab, https://www.mad.tf.fau.de)
+2. Its structured in Datasets, Algorithms and Pipelines according to the Object-Oriented tpcp-Concept from Küderle et al. (https://tpcp.readthedocs.io/en/latest/README.html)
+3. It implements various Algorithms for extracting Respiratory Rate (RR) from other biomedical signals e.g. IMU and ECG. The algorithms were inspired from other papers, which are mentioned in the Documentation and/or the corresponding class names
 
 
 
