@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "respiration_extraction"
+version = "0.1.0"
+description = ""
+authors = ["Philipp Doerfler <ced.doerfler@fau.de>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+tpcp = "^0.6.3"
+seaborn = "^0.11.2"
+fau-colors = "^1.0.5"
+tk = "^0.1.0"
+biopsykit = "0.7.0"
+
+[tool.poetry.dev-dependencies]
+ipympl = "^0.9.1"
+black = "^22.3.0"
+poethepoet = "^0.13.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+prospector = "^1.7.7"
+ipykernel = "^6.13.0"
+nbstripout = "^0.5.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | docs
+    | build
+    | dist
+    | \.virtual_documents
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 120
+skip_gitignore = true
+
+
+
+[tool.poe.tasks]
+_format_black = "black ."
+_format_isort = "isort ."
+format = { sequence = ["_format_black", "_format_isort"], help = "Format all files." }
+lint = { cmd = "prospector", help = "Lint all files with Prospector." }
+_check_black = "black . --check"
+_check_isort = "isort . --check"
+check = { sequence = ["_check_black", "_check_isort", "lint"], help = "Check all potential format and linting issues." }
+test = { cmd = "pytest --cov=respiration_extraction --cov-report=term-missing --cov-report=xml", help = "Run Pytest with coverage." }
+version = { script = "_tasks:task_update_version()" }
+conf_jupyter = { cmd = "python -m ipykernel install --user --name respiration_extraction", help = "Add a new jupyter kernel for the project." }
+conf_nbstripout = { cmd = "nbstripout --install", help = "Enable the nbstripout pre commit hook."}
+
+remove_jupyter = { cmd = "jupyter kernelspec uninstall respiration_extraction", help = "Remove the project specific jupyter kernel."}
+experiment = { script = "_tasks:task_new_experiment()", help = "Create the boilerplate for a new experiment in the experiment subfolder."}
