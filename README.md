@@ -112,8 +112,3 @@ poe lint # runs prospector
 
 If you want to check if all code follows the code guidelines, run `poe check`.
 This can be useful in the CI context
-
-
-### Tests
-
-All tests are located in the `tests` folder and can be executed by using `poe test`.
